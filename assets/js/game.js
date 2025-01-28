@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Declare DOM variables
     const wheelElement = document.querySelector('#wheel');
     const targets = document.querySelectorAll('.target');
-    const knifeElement = document.querySelector('#knife');
+    const knifeElement = document.querySelector('.knife-item');
     let stuckKnifes = [];
 
     // counter simple para puntuación al impactar en un target
@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const knife = new Knife(
         parseInt(knifeElement.style.left) || 0,
         parseInt(knifeElement.style.top) || 0
+    );
+
+    const wheel = new Wheel(
+        wheelElement.offsetLeft + wheelElement.offsetWidth / 2, // centerX
+        wheelElement.offsetTop + wheelElement.offsetHeight / 2, // centerY
+        wheelElement.offsetWidth / 2 // radius
     );
 
     // Get static positions of the targets (they won't move now)
