@@ -4,8 +4,13 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+
+}
+
 .main {
-  width: 100%;
+  width: 80%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,8 +39,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  animation: rotateWheelCounterClockwise 3s linear infinite;
+  -webkit-animation: rotateWheelCounterClockwise 3s linear infinite;
   img {
     width: 50%;
+  }
+}
+
+@keyframes rotateWheel {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateWheelCounterClockwise {
+  100% {
+    transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+    -moz-transform: rotate(-360deg);
+    -ms-transform: rotate(-360deg);
+    -o-transform: rotate(-360deg);
   }
 }
 
@@ -54,4 +82,44 @@
   background-color: bisque;
   position: absolute;
   bottom: 0;
+}
+
+.knifes {
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.knife {
+  width: 50px;
+  height: 90px;
+  background-color: bisque;
+  margin-bottom: 1rem;
+}
+
+.target {
+  width: 50px;
+  height: 50px;
+  border-radius: 99%;
+  -webkit-border-radius: 99%;
+  -moz-border-radius: 99%;
+  -ms-border-radius: 99%;
+  -o-border-radius: 99%;
+  background-color: black;
+  position: absolute;
+}
+
+div[data-target="target01"] {
+  top: 0;
+  left: -5%;
+}
+
+div[data-target="target02"] {
+  top: 92%;
+  left: 70%;
+}
+
+div[data-target="target03"] {
+  top: 35%;
+  left: 100%;
 }

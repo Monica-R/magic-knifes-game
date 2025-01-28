@@ -7,17 +7,32 @@
   <title>Magic knifes</title>
 </head>
 <body>
+  <aside class="knifes">
+    <div class="knife">Cuchillo</div>
+    <div class="knife">Cuchillo</div>
+    <div class="knife">Cuchillo</div>
+    <div class="knife">Cuchillo</div>
+    <div class="knife">Cuchillo</div>
+    <div class="knife">Cuchillo</div>
+    <div class="knife">Cuchillo</div>
+  </aside>
   <main class="main">
-    <!-- <section class="knifes"></section> -->
     <section class="game">
-      <div class="wheel"><img src="https://cdn-icons-png.flaticon.com/512/3844/3844724.png" alt="music-img"></div>
+      <div class="wheel" id="wheel">
+        <img src="https://cdn-icons-png.flaticon.com/512/3844/3844724.png" alt="music-img">
+        <div data-target="target01" class="target"></div>
+        <div data-target="target02" class="target"></div>
+        <div data-target="target03" class="target"></div>
+      </div>
     </section>
     <section class="trigger-knife">
       <div class="knife-item"></div>
     </section>
   </main>
 
-  <script src="./assets/js/index.js"></script>
-  <script src="./assets/js/game.js"></script>
+  <script src="./assets/js/knife.js" defer></script>
+  <script src="./assets/js/wheel.js" defer></script>
+  <script src="./assets/js/target.js" defer></script>
+  <script src="./assets/js/game.js" defer></script>
 </body>
 </html>
