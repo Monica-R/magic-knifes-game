@@ -2,80 +2,55 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Declare DOM variables
     const wheelElement = document.querySelector('#wheel');
-    const targetElements = document.querySelectorAll('.target');
     const knifeElement = document.querySelector('.knife-item');
     const uiAllKnifes = document.querySelectorAll('.knife');
     
     let stuckKnives = [];
     let remainingKnives = 7; //Cantidad inicial de cuchillos
     // counter simple para puntuación al impactar en un target
-    let score = 0;    
+    let score = 0;
     
     
     // Create the wheel, targets and knife instances
-    const targets = Array.from(targetElements).map(target => new Target(target));
     const wheel = new Wheel(wheelElement);
-    const knife = new Knife(knifeElement, wheel);
+    const knife = new Knife(knifeElement);
 
-        // Evento para lanzar el cuchillo
+    // Evento para lanzar el cuchillo
     document.addEventListener('click', () => {
         if (remainingKnives > 0) { // Usar el ratón
             console.info('cuchillo lanzado');
-            knife.throwKnife(targets, stuckKnives);
+            knife.throwKnife();
             remainingKnives--;
             console.log(`Cuchillos restantes: ${remainingKnives}`);
+
+            
         }
 
-        function printUIKnives(arrayNodes) {
-            const result = arrayNodes.map(item => {
-                document.querySelector('.knifes').appendChild(item);
-            });
+        const top = knife.knifeElement.getBoundingClientRect().top;
+        if (top < 250 && top > 0) {
+            
+            // Stop actual animation (if proceed)
+            // knife.knifeElement.style.transition = 'none';
+            // knife.knifeElement.style.animation = 'none';
+            
+            // Set the knife on the wheel
+            const currentTop = knife.knifeElement.offsetTop;
+            knife.knifeElement.style.top = `${currentTop}px`;
+            //knife.knifeElement.style.transform = 'none';
+            knife.knifeElement.style.visibility = 'hidden';
+            alert('YA HAS LLEGADO');
         }
     });
 
+
     console.info('wheel:', wheel);
     console.info('knife:', knife);
-    console.info('wheel', wheel)
 
 
-/*     //Puntuación
+/*  Puntuación
     const updateScore = (points) => {
         score += points;
         console.info(`Puntuación: ${points}`);
     }
-
-    // Knife throw listener
-    knifeElement.addEventListener("click", () => {
-        if (remainingKnifes <= 0) {
-            console.warn("No quedan cuchillos disponibles");
-            return;
-        }
-        console.info('cuchillo lanzado');
-
-        const idKnife = setInterval(() => {
-            const collision = knife.checkCollision(targets, stuckKnifes);
-            if (collision) {
-                if (collision instanceof Target) {
-                    collision.markAsHit();
-                    updateScore(10); // Aumentar puntuación
-                    clearIntervalKnife(idKnife);
-                    console.log('¡Target impactado!');
-                } else {
-                    console.log('El cuchillo se ha clavado en otro cuchillo');
-                }
-                // Agregar cuchillo a los stuckKnifes si no ha salido de la pantalla
-                stuckKnifes.push(knife);
-            }
-    
-            // Reducir número de cuchillos restantes
-            remainingKnifes--;
-            console.log(`Cuchillos restantes: ${remainingKnifes}`);
-        }, 1000);
-
-    });
-
-    function clearIntervalKnife(idIntervalKnife) {
-        clearInterval(idIntervalKnife);
-    }
-     */
+*/
 });
