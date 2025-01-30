@@ -73,7 +73,6 @@ body {
   background-color: black;
   display: flex;
   justify-content: center;
-  position: relative;
 }
 
 .knife-item {
@@ -82,6 +81,11 @@ body {
   background-color: bisque;
   position: absolute;
   bottom: 0;
+  transition: top 1s ease;
+  -webkit-transition: top 1s ease;
+  -moz-transition: top 1s ease;
+  -ms-transition: top 1s ease;
+  -o-transition: top 1s ease;
 }
 
 .knifes {

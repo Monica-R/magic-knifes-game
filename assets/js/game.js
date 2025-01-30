@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     
     // Create the wheel, targets and knife instances
-    const knife = new Knife(knifeElement);
     const targets = Array.from(targetElements).map(target => new Target(target));
     const wheel = new Wheel(wheelElement);
+    const knife = new Knife(knifeElement, wheel);
 
         // Evento para lanzar el cuchillo
     document.addEventListener('click', () => {
@@ -23,9 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.info('cuchillo lanzado');
             knife.throwKnife(targets, stuckKnives);
             remainingKnives--;
-            uiAllKnifes.pop();
-            document.querySelector('.knife').remove();
-            printUIKnives(uiAllKnifes);
             console.log(`Cuchillos restantes: ${remainingKnives}`);
         }
 
